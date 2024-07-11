@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-
 </script>
 
 <template>
@@ -8,20 +7,16 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">
-            Home
-          </RouterLink>
-          <RouterLink to="/about">
-            About
-          </RouterLink>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
     </header>
+    <RouterView />
   </div>
 </template>
 
 <style scoped>
-
 nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -30,5 +25,4 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
-
 </style>
