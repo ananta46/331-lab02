@@ -13,17 +13,22 @@ const hasNextPage = computed(() => {
   return page.value < totalPages
 })
 const props = defineProps({
+  limit: {
+    type: Number,
+    required: true
+  },
   page: {
     type: Number,
     required: true
   }
 })
 const page = computed(() => props.page)
+const maxEvent = computed(() => props.limit)
 
 onMounted(() => {
   watchEffect(() => {
     events.value = null
-    EventService.getEvents(2, page.value)
+    EventService.getEvents(maxEvent.value, page.value)
       .then((response) => {
         // console.log(response.data)
         events.value = response.data
@@ -45,13 +50,13 @@ onMounted(() => {
   </div>
   <div class="pagination">
     <RouterLink
-      :to="{ name: 'event-list-view', query: { page: page - 1 } }"
+      :to="{ name: 'event-list-view', query: { page: page - 1, limit: limit } }"
       rel="prev"
       v-if="page != 1"
       >&#60; Prev Page
     </RouterLink>
     <RouterLink
-      :to="{ name: 'event-list-view', query: { page: page + 1 } }"
+      :to="{ name: 'event-list-view', query: { page: page + 1, limit: limit } }"
       rel="next"
       v-if="hasNextPage"
       >Next Page &#62;
