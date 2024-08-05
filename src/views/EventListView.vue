@@ -43,21 +43,37 @@ onMounted(() => {
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <!-- <EventOrg v-for="event in events" :key="event.id" :event="event" /> -->
   </div>
-  <RouterLink
-    :to="{ name: 'event-list-view', query: { page: page - 1 } }"
-    rel="prev"
-    v-if="page != 1"
-    >Prev Page
-  </RouterLink>
-  <RouterLink :to="{ name: 'event-list-view', query: { page: page + 1 } }" rel="next"
-    v-if="hasNextPage"
-    >Next Page
-  </RouterLink>
+  <div class="pagination">
+    <RouterLink
+      :to="{ name: 'event-list-view', query: { page: page - 1 } }"
+      rel="prev"
+      v-if="page != 1"
+      >&#60; Prev Page
+    </RouterLink>
+    <RouterLink
+      :to="{ name: 'event-list-view', query: { page: page + 1 } }"
+      rel="next"
+      v-if="hasNextPage"
+      >Next Page &#62;
+    </RouterLink>
+  </div>
 </template>
 <style scope>
 .event {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.pagination {
+  display: flex;
+  width: 290px;
+}
+.pagination a {
+  flex: 1;
+  text-decoration: none;
+  color: #2c3e50;
+}
+#page-prev {
+  text-align: right;
 }
 </style>
