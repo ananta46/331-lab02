@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, defineProps } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 import { type Event } from '@/types'
 import EventService from '@/services/EventService'
 const router = useRouter()
@@ -16,11 +16,15 @@ onMounted(() => {
     .then((response) => {
       event.value = response.data
     })
-    .catch(() => {
-      router.push({
-        name: '404-resource-view',
-        params: { resource: 'event'}
-      })
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+        router.push({
+          name: '404-resource-view',
+          params: { resource: 'event' }
+        })
+      } else {
+        router.push({ name: 'network-error-view' })
+      }
     })
 })
 </script>
@@ -29,9 +33,9 @@ onMounted(() => {
   <div v-if="event">
     <h1>{{ event.title }}</h1>
     <nav>
-      <RouterLink :to="{ name: 'event-detail-view',  }">Details</RouterLink>|
-      <RouterLink :to="{ name: 'event-register-view',  }">Register</RouterLink>|
-      <RouterLink :to="{ name: 'event-edit-view',  }">Edit</RouterLink>
+      <RouterLink :to="{ name: 'event-detail-view' }">Details</RouterLink>|
+      <RouterLink :to="{ name: 'event-register-view' }">Register</RouterLink>|
+      <RouterLink :to="{ name: 'event-edit-view' }">Edit</RouterLink>
     </nav>
     <RouterView :event="event" />
   </div>
