@@ -11,6 +11,7 @@ onMounted(() => {
     .then((response) => {
       // console.log(response.data)
       events.value = response.data
+      console.log(events.value)
     })
     .catch((error) => {
       console.log('There was an error!', error)
