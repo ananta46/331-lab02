@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import Event from '@/types/Event'
 import { type Event } from '@/types'; 
 defineProps<{
   event: Event

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
-import EventOrg from '@/components/EventOrg.vue'
-
-// import Event from '@/types/Event'
 import { type Event } from '@/types'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
+
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
