@@ -13,11 +13,9 @@ const { event } = toRefs(props)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 const register = () => {
-  //
-  //
+
   store.updateMessage('you are successfully registered for ' + props.event.title)
-  //test commit
-  //test commit2
+ 
   setTimeout(() => {
     store.resetMessage()
   }, 3000)
