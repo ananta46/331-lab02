@@ -9,7 +9,7 @@ const router = useRouter
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 2)
+  const totalPages = Math.ceil(totalEvents.value / 3)
   return page.value < totalPages
 })
 const props = defineProps({
@@ -27,7 +27,7 @@ const maxEvent = computed(() => props.limit)
 
 onMounted(() => {
   watchEffect(() => {
-    EventService.getEvents(maxEvent.value, page.value)
+    EventService.getEvents(3, page.value)
       .then((response) => {
         // console.log(response.data)
         events.value = response.data
