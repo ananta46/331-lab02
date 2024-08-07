@@ -4,10 +4,10 @@ import EventDetailView from '@/views/event/DetailView.vue'
 import EventRegisterView from '@/views/event/RegisterView.vue'
 import EventLayoutView from '@/views/event/LayoutView.vue'
 import EventEditView from '@/views/event/EditView.vue'
-import AboutView from '@/views/AboutView.vue'
 import StudentListView from '@/views/StudentListView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
+import nProgress from 'nprogress'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,7 +18,7 @@ const router = createRouter({
       component: EventListView,
       props: (route) => ({
         limit: parseInt(route.query.limit?.toString() || '2'),
-        page:  parseInt(route.query.page?.toString() || '1')
+        page: parseInt(route.query.page?.toString() || '1')
       })
     },
     {
@@ -48,11 +48,6 @@ const router = createRouter({
       ]
     },
     {
-      path: '/about',
-      name: 'about',
-      component: AboutView
-    },
-    {
       path: '/student',
       name: 'student',
       component: StudentListView
@@ -74,6 +69,12 @@ const router = createRouter({
       component: NetworkErrorView
     }
   ]
+})
+router.beforeEach(() => {
+  nProgress.start()
+})
+router.afterEach(() =>{
+  nProgress.done()
 })
 
 export default router
