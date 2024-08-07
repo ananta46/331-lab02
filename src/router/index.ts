@@ -34,8 +34,9 @@ const router = createRouter({
         const eventStore = useEventStore()
         return EventService.getEvent(id)
         .then((response) => {
-          eventStore.updateEvent(response.data)
-        }).catch((error) => {
+          eventStore.setEvent(response.data)
+        })
+        .catch((error) => {
           if (error.response && error.response.status === 404){
             return {
               name: '404-resource-view',
