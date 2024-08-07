@@ -3,6 +3,8 @@ import EventCard from '@/components/EventCard.vue'
 import { type Event } from '@/types'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
+import { useRouter } from 'vue-router'
+const router = useRouter
 
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
@@ -26,6 +28,7 @@ const maxEvent = computed(() => props.limit)
 onMounted(() => {
   watchEffect(() => {
     events.value = null
+    
     EventService.getEvents(maxEvent.value, page.value)
       .then((response) => {
         // console.log(response.data)
