@@ -5,11 +5,8 @@ export const useEventStore = defineStore('message', {
     event: null
   }),
   actions: {
-    updateEvent(event: Event): void{
+    setEvent(event: Event): void{
         this.event = event
-    },
-    resetEvent():void {
-        this.event = null
     }
   }
 })
