@@ -27,8 +27,6 @@ const maxEvent = computed(() => props.limit)
 
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
-    
     EventService.getEvents(maxEvent.value, page.value)
       .then((response) => {
         // console.log(response.data)
