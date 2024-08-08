@@ -41,9 +41,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Events For Good</h1>
+  <h1 class="">Events For Good</h1>
   <!-- new element -->
-  <div class="events">
+  <div class="flex flex-col items-center text-red-500">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
     <!-- <EventOrg v-for="event in events" :key="event.id" :event="event" /> -->
   </div>
@@ -63,12 +63,7 @@ onMounted(() => {
   </div>
 </template>
 <style scope>
-.event {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.pagination {
+/* .pagination {
   display: flex;
   width: 290px;
 }
@@ -79,5 +74,5 @@ onMounted(() => {
 }
 #page-prev {
   text-align: right;
-}
+} */
 </style>
