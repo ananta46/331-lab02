@@ -34,29 +34,3 @@ const { message } = storeToRefs(store)
     <RouterView />
   </div>
 </template>
-
-<style>
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-/* @keyframes yellowfade {
-  from {
-    background-color: yellow;
-  }
-  to {
-    background: transparent;
-  }
-}
-#flashMessage {
-  animation: yellowfade 3s ease-in-out;
-} */
-</style>
