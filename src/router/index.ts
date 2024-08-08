@@ -68,11 +68,6 @@ const router = createRouter({
       ]
     },
     {
-      path: '/student',
-      name: 'student',
-      component: StudentListView
-    },
-    {
       path: '/404/:resource',
       name: '404-resource-view',
       component: NotFoundView,
