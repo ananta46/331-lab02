@@ -9,6 +9,15 @@ export default {
       },
       fontFamily: {
         sans: ['Avenir', 'Helvetica', 'Arial', 'sans-serif']
+      },
+      animation: {
+        fade: 'yellowFade 3s ease-in-out'
+      },
+      keyframes: {
+        yellowFade: {
+          '0%': { backgroundColor: 'yellow' },
+          '100%': { backgroundColor: 'transparent' }
+        }
       }
     }
   },
