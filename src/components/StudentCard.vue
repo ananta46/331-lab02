@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Student from '@/types/Student'
+import { type Student } from '@/types'
 defineProps<{
   student: Student
 }>()
@@ -19,7 +19,7 @@ defineProps<{
   <div class="student-class">
     <div class="student-card">
       <h4>{{ student.id }} : {{ student.studentId }}</h4>
-      <h2>{{ student.name + ' ' + student.surname }}</h2>
+      <h2>{{ student.name }}</h2>
       <span>"{{ student.description }}"</span><br />
       <span>gpa : {{ student.gpa }}</span>
     </div>
