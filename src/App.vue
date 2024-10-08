@@ -22,6 +22,20 @@ injectSpeedInsights()
             :to="{ name: 'event-list-view' }"
             >Event</RouterLink
           >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'add-event' }"
+            >AddEvent</RouterLink
+          >
+          |
+          <!-- <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'add-org' }"
+            >Event</RouterLink
+          > | -->
         </nav>
       </div>
     </header>
