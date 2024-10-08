@@ -12,6 +12,7 @@ defineProps<{
       class="cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] hover:scale-110 hover:shadow-sp"
     >
       <h2>{{ event.title }}</h2>
+      <h5>{{ event.organizer.name }}</h5>
       <span>@{{ event.time }} on {{ event.date }}</span>
     </div>
   </RouterLink>

@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import EventService from '@/services/EventService'
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
+import BaseInput from '@/components/BaseInput.vue'
 
 const event = ref<Event>({
   id: 0,
@@ -14,7 +15,10 @@ const event = ref<Event>({
   date: '',
   time: '',
   petsAllowed: false,
-  organizer: ''
+  organizer: {
+    id: 0,
+    name: ''
+  }
 })
 
 const router = useRouter()
@@ -39,19 +43,24 @@ function saveEvent() {
   <div>
     <h1>Create an Event</h1>
     <form @submit.prevent="saveEvent">
-      <label>Category</label>
+      <!-- <label>Category</label>
       <input v-model="event.category" type="text" placeholder="Category" class="field" />
+       -->
+      <BaseInput v-model="event.category" type="text" label="Category" />
 
       <h3>Name & describe your event</h3>
-      <label>Title</label>
-      <input v-model="event.title" type="text" placeholder="Title" class="field" />
+      <!-- <label>Title</label>
+      <input v-model="event.title" type="text" placeholder="Title" class="field" /> -->
+      <BaseInput v-model="event.title" type="text" label="Title" />
 
-      <label>Description</label>
-      <input v-model="event.description" type="text" placeholder="Description" class="field" />
+      <!-- <label>Description</label>
+      <input v-model="event.description" type="text" placeholder="Description" class="field" /> -->
+      <BaseInput v-model="event.description" type="text" label="Description" />
 
       <h3>Where is your event?</h3>
-      <label>Location</label>
-      <input v-model="event.location" type="text" placeholder="Location" class="field" />
+      <!-- <label>Location</label>
+      <input v-model="event.location" type="text" placeholder="Location" class="field" /> -->
+      <BaseInput v-model="event.location" type="text" label="location" />
 
       <button class="button" type="submit">Submit</button>
     </form>
@@ -60,75 +69,79 @@ function saveEvent() {
 </template>
 
 <style scoped>
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+/* Container for the form */
+div {
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-h1,
-h3 {
+/* Form header */
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
   color: #333;
 }
 
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+h3 {
+  font-size: 1.2em;
+  margin-top: 1.5em;
   color: #555;
 }
 
-input.field {
+/* Labels and inputs */
+label {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 0.2em;
+  display: block;
+  color: #333;
+}
+
+input[type='text'] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
+  margin: 0.5em 0 1em 0;
+  font-size: 1em;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  transition: border-color 0.2s ease;
 }
 
-input.field:focus {
-  outline: none;
+input[type='text']:focus {
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
 
-.button {
+/* Submit button */
+button.button {
   display: inline-block;
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
+  font-size: 1em;
+  font-weight: bold;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1em;
 }
 
-.button:hover {
+button.button:hover {
   background-color: #0056b3;
 }
 
+/* Debug display for event data */
 pre {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 15px;
+  background-color: #e9ecef;
+  padding: 10px;
   border-radius: 4px;
-  margin-top: 20px;
-  font-family: 'Courier New', monospace;
-}
-
-pre code {
-  font-size: 14px;
+  font-size: 0.9em;
   color: #333;
+  margin-top: 1em;
 }
 </style>
