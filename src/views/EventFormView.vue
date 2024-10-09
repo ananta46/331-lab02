@@ -6,6 +6,7 @@ import OrganizerService from '@/services/OrganizerService'
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import BaseInput from '@/components/BaseInput.vue'
+import BaseSelect from '@/components/BaseSelect.vue'
 
 const event = ref<Event>({
   id: 0,
@@ -74,16 +75,7 @@ function saveEvent() {
 
       <h3>Who is your organizer?</h3>
       <label>Select an Organizer</label>
-      <select v-model="event.organizer.id">
-        <option
-          v-for="option in organizers"
-          :value="option.id"
-          :key="option.id"
-          :selected="option.id === event.organizer.id"
-        >
-          {{ option.name }}
-        </option>
-      </select>
+      <BaseSelect v-model="event.organizer.id" :options="organizers" label="Organizer"/>
 
       <button class="button" type="submit">Submit</button>
     </form>
@@ -91,82 +83,5 @@ function saveEvent() {
   </div>
 </template>
 
-<style scoped>
-/* Container for the form */
-div {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-}
+<style scoped src="@/assets/form.css"></style>
 
-/* Form headers */
-h1 {
-  font-size: 2em;
-  margin-bottom: 1em;
-  color: #222;
-}
-
-h3 {
-  font-size: 1.4em;
-  margin-top: 1.5em;
-  color: #444;
-}
-
-/* Labels and inputs */
-label {
-  font-weight: 600;
-  font-size: 1em;
-  margin-bottom: 0.3em;
-  display: block;
-  color: #222;
-}
-
-input[type='text'],
-select {
-  width: 100%;
-  padding: 12px;
-  margin: 0.6em 0 1.2em 0;
-  font-size: 1em;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
-}
-
-input[type='text']:focus,
-select:focus {
-  border-color: #0078ff;
-  outline: none;
-}
-
-/* Submit button */
-button.button {
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: #0078ff;
-  color: #fff;
-  font-size: 1.1em;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1.2em;
-}
-
-button.button:hover {
-  background-color: #0054b8;
-}
-
-/* Debug display for event data */
-pre {
-  background-color: #f2f2f2;
-  padding: 12px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  color: #333;
-  margin-top: 1.5em;
-}
-</style>
