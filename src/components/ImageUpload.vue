@@ -5,7 +5,7 @@ interface Props {
   modelValue?: string[]
 }
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: []
+  modelValue: () => []
 })
 
 const convertStringToMedia = (str: string[]): any => {
